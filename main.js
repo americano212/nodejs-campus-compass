@@ -6,8 +6,8 @@ const port = 4000; // 서버에서 몇번 포트로 웹을 호스팅할지
 const path = require('path'); // 경로 관련
 
 const favicon = require('serve-favicon');
-app.use(favicon(path.join(__dirname,'public','img','favicon.ico')));
-
+app.use(favicon(path.join(__dirname,'public','favicon.ico')));
+app.use(express.static(__dirname+'/public'));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
