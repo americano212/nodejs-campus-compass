@@ -14,6 +14,7 @@ const sb = mysql.createConnection({
     user     : db_config.user,
     password : db_config.password,
     database : db_config.database,
+    port: 3306,
     dateStrings : 'date'
 });
 
