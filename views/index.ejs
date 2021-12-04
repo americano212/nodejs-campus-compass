@@ -68,18 +68,17 @@
           }
           .main_content{
             margin-top:10px;
-            margin-bottom:10px;
+            margin-bottom:30px;
           }
           .menu_post{
             margin-left:20px;
             margin-right:20px;
-            height:50px;
+            height:60px;
             line-height:50px;
             border-radius:15px;
             border:1px solid #A50005;
             padding-left:20px;
           }
-
           .menu_quest{
             margin-left:20px;
             margin-right:20px;
@@ -160,11 +159,9 @@
             <a href="/" style="position:absolute;right:0px;transform: translateX(-20px);top:0px;"><i class="fas fa-plus fa-2x" style="color:#A50005;"></i></a>
           </div>
           <% content_new_qna.forEach(function(value){ %>
-              <a href="/qna-detail/<%= value.q_id %>" style="color:black !important;text-decoration:none;">
-                <div class="menu_post">
-                  <%= value.q_question %>
-                </div>
-              </a>
+            <div class="menu_post">
+              <a href="/qna-detail/<%= value.q_id %>" style="color:black !important;text-decoration:none;"><%= value.q_question %></a>
+            </div>
           <% }); %>
         </div>
         <div class="container main_content">
@@ -172,33 +169,26 @@
             <div class="menu_quest" style="background-color:#A50005;">질문하기</div>
           </a>
         </div>
-
         <div class="container main_content">
           <div style="position:relative;margin-bottom:20px;">
             <h3 style="color:#A50005;margin-left:20px;font-family: 'Noto Sans KR';font-weight: bold;">FAQ</h3>
             <a href="/" style="position:absolute;right:0px;transform: translateX(-20px);top:0px;"><i class="fas fa-plus fa-2x" style="color:#A50005;"></i></a>
           </div>
           <% content_faq.forEach(function(value){ %>
-            <a href="/faq-detail/<%= value.f_id %>" style="color:black !important;text-decoration:none;">
-              <div class="menu_post">
-                <%= value.f_question %>
-              </div>
-            </a>
+            <div class="menu_post">
+              <a href="/faq-detail/<%= value.f_id %>" style="color:black !important;text-decoration:none;"><%= value.f_question %></a>
+            </div>
           <% }); %>
         </div>
-
-
         <div class="container main_content">
           <div style="position:relative;margin-bottom:20px;">
             <h3 style="color:#A50005;margin-left:20px;font-family: 'Noto Sans KR';font-weight: bold;">Q&A</h3>
             <a href="/" style="position:absolute;right:0px;transform: translateX(-20px);top:0px;"><i class="fas fa-plus fa-2x" style="color:#A50005;"></i></a>
           </div>
           <% content_qna.forEach(function(value){ %>
-            <a href="/faq-detail/<%= value.f_id %>" style="color:black !important;text-decoration:none;">
-              <div class="menu_post">
-                <%= value.q_question %>
-              </div>
-            </a>
+            <div class="menu_post">
+              <a href="/faq-detail/<%= value.f_id %>" style="color:black !important;text-decoration:none;"><%= value.q_question %></a>
+            </div>
           <% }); %>
         </div>
 
