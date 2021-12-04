@@ -104,11 +104,8 @@ app.get('/qna-detail/:id', (req, res) => {
             if(err){
                 throw err;
             }
-            const q_content = Buffer.from(result[0].q_content, "base64").toString('utf8');
-
             sb.query(sql_hitup,[req.params.id],function(err,result_hit,fields){});
-            res.render('qna-detail',{contents : result[0],  replys : result_reply, self_seq : req.params.id, description : q_content});
-            console.log(result[0]);
+            res.render('qna-detail',{question : result[0]?.q_question,  replys : result_reply, self_seq : req.params.id, description : result[0]?.q_content});
         });
     });
 });
@@ -133,11 +130,9 @@ app.get('/faq-detail/:id', (req, res) => {
         if(err){
             throw err;
         }
-        const f_answer = Buffer.from(result[0].f_answer, "base64").toString('utf8');
 
         sb.query(sql_hitup,[req.params.id],function(err,result_hit,fields){});
-        res.render('faq-detail',{contents : result[0], self_seq : req.params.id, description : f_answer});
-        console.log(result[0]);
+        res.render('faq-detail',{contents : result[0], self_seq : req.params.id, description : result[0]?.f_answer});
 
     });
 });
