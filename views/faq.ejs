@@ -23,18 +23,19 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 25px;
+            border-radius: 30px;
             padding: 10px;
-            height: 50px;
+            height: 60px;
             width:80%;
             padding-right:60px;
             padding-left:20px;
+            border-color : #b8b8b8;
           }
           .search-button{
             position:absolute;
             right:10%;
             transform: translateX(-20px);
-            top:8px;
+            top:14px;
             width:32px;
             height:32px;
             border-width:0px;
@@ -52,7 +53,7 @@
           }
         </style>
         <form action="search" method="get" class="cont search-form">
-           <input type="text" class="search-bar border-dark" name="query">
+           <input type="text"  class="search-bar form-control" name="query"/>
            <i class="search-button fas fa-search fa-2x"></i>
            <input type="submit" class="search-button" value="">
         </form>
