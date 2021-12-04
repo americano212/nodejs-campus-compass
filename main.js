@@ -209,20 +209,25 @@ app.get('/faq-down/:id', (req, res) => {
 app.get('/search', (req, res) => {
     var query = url.parse(req.url, true).query.query;
     const sql_call_num = "SELECT c_id,c_keyword,c_num,c_where FROM tb_call WHERE (c_keyword LIKE ? OR c_where LIKE ?) ORDER BY c_id DESC ";
-    const sql_qna = "SELECT * FROM tb_qna WHERE ((NOT q_ans_cnt=0) AND ((q_question LIKE ?) OR (q_content LIKE ?))) ORDER BY q_id DESC";
+
+    const sql_qna = "SELECT * FROM tb_qna WHERE (NOT q_ans_cnt=0) ORDER BY q_id DESC";
     const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq WHERE (f_question LIKE ? OR f_answer LIKE ? OR f_tag LIKE ?) ORDER BY f_id DESC";
 
     const query_ ='%'+ Buffer.from(query, "utf8").toString('base64')+'%';
     sb.query(sql_call_num,['%' + query + '%','%' + query + '%'],function(err,result1,fields){
         if(err) throw err;
 
-        sb.query(sql_qna,[query_,query_],function(err,result2,fields){
+        sb.query(sql_qna,function(err,result2,fields){
             if(err) throw err;
-
+            var a = [];
+            for(var i = 0; i < result2.length;i++){
+                if(query.length!=0 && ((Buffer.from(JSON.stringify(result2[i].q_question), "base64").toString('utf8').match(query)==query) || (Buffer.from(JSON.stringify(result2[i].q_content), "base64").toString('utf8').match(query)==query))){
+                    a.push(result2[i]);
+                }
+            }
             sb.query(sql_faq,['%' + query + '%','%' + query + '%','%' + query + '%'],function(err,result3,fields){
                 if(err) throw err;
-
-                res.render('search',{content_call_num : result1, content_qna:result2, content_faq:result3});
+                res.render('search',{content_call_num : result1, content_qna:a, content_faq:result3});
             });
         });
     });
