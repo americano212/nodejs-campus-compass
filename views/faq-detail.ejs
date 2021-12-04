@@ -41,6 +41,17 @@
             border-width:0px;
             background-color:inherit;
           }
+          .text_box{
+              margin-left: 5%;
+              margin-right: 5%;
+              margin-top: 50px;
+              left: 10%;
+          }
+          .question_box{
+              border: 1px solid #A50005;
+              border-radius: 10px;
+              padding: 5px;
+          }
           @media screen and (max-width: 992px) {
             .search-bar{
               width:90%;
@@ -57,12 +68,23 @@
            <i class="search-button fas fa-search fa-2x"></i>
            <input type="submit" class="search-button" value="">
         </form>
-        <pre>
-            <%= contents.f_question %>
+        <div class="text_box">
+            <h3 style="color:#A50005;">FAQ</h3>
             <br>
-            <%= contents.f_answer %>
-        </pre>
-        <%= contents.f_like %>
+            <h5 style="color:#A50005;">질문</h5>
+            <div class="question_box">
+                <%= contents.f_question %>
+            </div>
+            <br>
+            <h5 style="color:#A50005;">답변</h5>
+            <div class="answer_box">
+                <textarea>
+                    <%= contents.f_answer %>
+                </textarea>
+            </div>
+        </div>
+
+        <!--<%= contents.f_like %>-->
 
     </body>
 </html>
