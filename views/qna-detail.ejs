@@ -96,7 +96,7 @@
           font-weight: regular;
           font-size: 16px;
         }
-        
+
           @media screen and (max-width: 992px) {
             .search-bar{
               width:90%;
@@ -137,13 +137,13 @@
             <br>
             <h6 style="color:#A50005;">내용</h6>
             <div class="answer_box">
-                <pre><%= contents.q_content %></pre>
+                <pre style="white-space:pre-wrap"><%= contents.q_content %></pre>
             </div>
             <br>
             <br>
             <h6 style="color:#A50005;">답변</h6>
             <% replys.forEach(function(value){ %>
-                <pre class="reply_box"><%= value.a_answer %><br><p class="like">도움이 되었나요?&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ans-up/<%= value.a_id %>">▲</a>&nbsp;&nbsp;<%= value.a_like %>&nbsp;&nbsp;<a href="/ans-down/<%= value.a_id %>">▼</a></p></pre>
+                <pre class="reply_box" style="white-space:pre-wrap"><%= value.a_answer %><br><p class="like">도움이 되었나요?&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ans-up/<%= value.a_id %>">▲</a>&nbsp;&nbsp;<%= value.a_like %>&nbsp;&nbsp;<a href="/ans-down/<%= value.a_id %>">▼</a></p></pre>
             <% }); %>
             <form method="post" class="reply_create_box">
             <div class="reply_box reply_text">
