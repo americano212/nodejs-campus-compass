@@ -32,8 +32,23 @@ app.set('views', path.join(__dirname, 'views'));
 
 // domain으로 들어왔을때 어떤걸 render 해줄지
 app.get('/', (req, res) => { // req : request, res : response
-    res.render('index');
+    const sql_new_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE q_ans_cnt=0 LIMIT 3";
+    const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 LIMIT 3";
+    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq LIMIT 3";
 
+    sb.query(sql_new_qna,function(err,result1,fields){
+        if(err) throw err;
+
+        sb.query(sql_qna,function(err,result2,fields){
+            if(err) throw err;
+
+            sb.query(sql_faq,function(err,result3,fields){
+                if(err) throw err;
+
+                res.render('index',{content_new_qna : result1, content_qna:result2, content_faq:result3});
+            });
+        });
+    });
 })
 
 
