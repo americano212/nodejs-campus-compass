@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded());
 
 // domain으로 들어왔을때 어떤걸 render 해줄지
 app.get('/', (req, res) => { // req : request, res : response
-    const sql_new_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE q_ans_cnt=0 ORDER BY q_id DESC LIMIT 3";
+    const sql_new_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna ORDER BY q_id DESC LIMIT 3";
     const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 ORDER BY q_id DESC LIMIT 3";
     const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq ORDER BY f_id DESC LIMIT 3";
 
