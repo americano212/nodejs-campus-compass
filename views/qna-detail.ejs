@@ -117,7 +117,9 @@
             <% replys.forEach(function(value){ %>
                 <div class="reply_box">
                     <%= value.a_answer %>
-                    <!--<%= value.a_like %>-->
+                    <%= value.a_like %>
+                    <a href="/ans-up/<%= value.a_id %>">up</a>
+                    <a href="/ans-down/<%= value.a_id %>">down</a>
                 </div>
             <% }); %>
             <br>

@@ -134,6 +134,34 @@ app.post('/qna-detail/:id', (req, res) => {
     });
 });
 
+app.get('/ans-up/:id', (req, res) => {
+    const sql_up = "UPDATE tb_ans SET a_like = a_like + 1 WHERE a_id = ?";
+    const sql_get = "SELECT * from tb_ans WHERE a_id = ?";
+    sb.query(sql_up,[req.params.id],function(err,result,fields){
+        sb.query(sql_get,[req.params.id],function(err,result1,fields){
+            if(err){
+                throw err;
+            }
+            res.redirect(`/qna-detail/${result1[0].a_q_id}`);
+        });
+
+    });
+});
+
+app.get('/ans-down/:id', (req, res) => {
+    const sql_up = "UPDATE tb_ans SET a_like = a_like - 1 WHERE a_id = ?";
+    const sql_get = "SELECT * from tb_ans WHERE a_id = ?";
+    sb.query(sql_up,[req.params.id],function(err,result,fields){
+        sb.query(sql_get,[req.params.id],function(err,result1,fields){
+            if(err){
+                throw err;
+            }
+            res.redirect(`/qna-detail/${result1[0].a_q_id}`);
+        });
+
+    });
+});
+
 app.get('/faq-detail/:id', (req, res) => {
     const sql = "SELECT * FROM tb_faq WHERE f_id = ?";
     const sql_hitup = "UPDATE tb_faq SET f_hit = f_hit + 1 WHERE f_id = ?";
@@ -145,6 +173,28 @@ app.get('/faq-detail/:id', (req, res) => {
         sb.query(sql_hitup,[req.params.id],function(err,result_hit,fields){});
         res.render('faq-detail',{contents : result[0], self_seq : req.params.id});
         console.log(result[0]);
+
+    });
+});
+
+app.get('/faq-up/:id', (req, res) => {
+    const sql_up = "UPDATE tb_faq SET f_like = f_like + 1 WHERE f_id = ?";
+    sb.query(sql_up,[req.params.id],function(err,result,fields){
+        if(err){
+            throw err;
+        }
+        res.redirect(`/faq-detail/${req.params.id}`);
+
+    });
+});
+
+app.get('/faq-down/:id', (req, res) => {
+    const sql_up = "UPDATE tb_faq SET f_like = f_like - 1 WHERE f_id = ?";
+    sb.query(sql_up,[req.params.id],function(err,result,fields){
+        if(err){
+            throw err;
+        }
+        res.redirect(`/faq-detail/${req.params.id}`);
 
     });
 });
