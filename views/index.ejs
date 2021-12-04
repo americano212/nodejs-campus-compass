@@ -64,6 +64,10 @@
           .category_container{
             margin-bottom:15px;
           }
+          .main_content{
+            margin-top:10px;
+            margin-bottom:10px;
+          }
           .menu_post{
             margin-left:20px;
             margin-right:20px;
@@ -139,8 +143,8 @@
           </div>
         </div>
 
-        <div class="container">
-          <div class="newq" style="position:relative;margin-bottom:20px;">
+        <div class="container main_content">
+          <div style="position:relative;margin-bottom:20px;">
             <h3 style="color:#A50005;margin-left:20px;font-family: 'Noto Sans KR';font-weight: bold;">최근질문</h3>
             <a href="/" style="position:absolute;right:0px;transform: translateX(-20px);top:0px;"><i class="fas fa-plus fa-2x" style="color:#A50005;"></i></a>
           </div>
@@ -150,20 +154,28 @@
             </div>
           <% }); %>
         </div>
+        <div class="container main_content">
+          <div style="position:relative;margin-bottom:20px;">
+            <h3 style="color:#A50005;margin-left:20px;font-family: 'Noto Sans KR';font-weight: bold;">FAQ</h3>
+            <a href="/" style="position:absolute;right:0px;transform: translateX(-20px);top:0px;"><i class="fas fa-plus fa-2x" style="color:#A50005;"></i></a>
+          </div>
+          <% content_faq.forEach(function(value){ %>
+            <div class="menu_post">
+              <a href="/faq-detail/<%= value.f_id %>" style="color:black !important;text-decoration:none;"><%= value.f_question %></a>
+            </div>
+          <% }); %>
+        </div>
+        <div class="container main_content">
+          <div style="position:relative;margin-bottom:20px;">
+            <h3 style="color:#A50005;margin-left:20px;font-family: 'Noto Sans KR';font-weight: bold;">Q&A</h3>
+            <a href="/" style="position:absolute;right:0px;transform: translateX(-20px);top:0px;"><i class="fas fa-plus fa-2x" style="color:#A50005;"></i></a>
+          </div>
+          <% content_qna.forEach(function(value){ %>
+            <div class="menu_post">
+              <a href="/faq-detail/<%= value.f_id %>" style="color:black !important;text-decoration:none;"><%= value.q_question %></a>
+            </div>
+          <% }); %>
+        </div>
 
-        <br>
-
-        <br>
-        Hello World
-        <br>
-        <% content_faq.forEach(function(value){ %>
-            <a href="/faq-detail/<%= value.f_id %>"><%= value.f_question %></a>
-        <% }); %>
-        <br>
-        Hello World
-        <br>
-        <% content_qna.forEach(function(value){ %>
-            <a href="/qna-detail/<%= value.q_id %>"><%= value.q_question %></a>
-        <% }); %>
     </body>
 </html>
