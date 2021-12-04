@@ -92,7 +92,6 @@ app.get('/write', (req, res) => {
 
 app.post('/write', (req, res) => {
     const post = req.body;
-    console.log(post);
     const title = Buffer.from(post.title, "utf8").toString('base64');
     const desc = post.description;
     if(title=='' | desc==''){
@@ -101,7 +100,7 @@ app.post('/write', (req, res) => {
     else{
         const sql = 'INSERT INTO tb_qna (q_question, q_content) VALUES';
         const sqlValue = `("${post.title}","${desc}");`;
-        sb.query(sql+sqlValue,req.body,function(err,result,fields){
+        sb.query(sql+sqlValue,function(err,result,fields){
             if(err) throw err;
             res.redirect('/newqna');
         });
