@@ -21,6 +21,10 @@
     <body>
         <%- include("header") %>
         <style>
+        a:link{
+            color:#212529;
+  text-decoration: none;
+        }
         .cont{
             margin-top:15px;
             position: relative;
@@ -99,10 +103,9 @@
                   <div><%= value.q_question %></div>
                   <span class="reply_cnt" style="min-width:40px;text-align:center;">답변<br><%= value.q_ans_cnt %></span>
                 </div>
-              </a>
-
             <% }); %>
             <br>
         </div>
+        <%- include("footer") %>
     </body>
 </html>

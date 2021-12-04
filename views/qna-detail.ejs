@@ -58,17 +58,17 @@
           .question_box{
               overflow-wrap:break-word;
               border: 1px solid #A50005;
-              border-radius: 10px;
+              border-radius: 15px;
               padding: 15px;
           }
           .answer_box{
               border: 1px solid #A50005;
-              border-radius: 10px;
+              border-radius: 15px;
               padding: 15px;
           }
           .reply_box{
               border: 1px solid #A50005;
-              border-radius: 10px;
+              border-radius: 15px;
               padding: 15px;
               margin-top: 5px;
           }
@@ -87,6 +87,14 @@
           a:link{
             color: #A50005;
           text-decoration: none;
+        }
+        .reply_text{
+          text-align: center;
+        }
+        pre{
+          font-family: 'Noto Sans KR';
+          font-weight: regular;
+          font-size: 16px;
         }
           @media screen and (max-width: 992px) {
             .search-bar{
@@ -124,37 +132,22 @@
             <br>
             <h6 style="color:#A50005;">내용</h6>
             <div class="answer_box">
-                <p>
-                    <%= contents.q_content %>
-                </p>
+                <pre><%= contents.q_content %></pre>
             </div>
             <br>
             <br>
             <h6 style="color:#A50005;">답변</h6>
             <% replys.forEach(function(value){ %>
-                <div class="reply_box">
-                    <%= value.a_answer %>
-                    <br>
-                    <br>
-                    <p class="like">
-                      도움이 되었나요?&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="/ans-up/<%= value.a_id %>">▲</a>
-                    &nbsp;&nbsp;
-                    <%= value.a_like %>
-                    &nbsp;&nbsp;
-                    <a href="/ans-down/<%= value.a_id %>">▼</a></p>
-                </div>
+                <pre class="reply_box"><%= value.a_answer %><br><p class="like">도움이 되었나요?&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ans-up/<%= value.a_id %>">▲</a>&nbsp;&nbsp;<%= value.a_like %>&nbsp;&nbsp;<a href="/ans-down/<%= value.a_id %>">▼</a></p></pre>
             <% }); %>
-            <br>
-            <br>
             <form method="post" class="reply_create_box">
-            <div class="reply_box">
-                  <textarea name="reply" id="reply" style="﻿overflow-y:scroll; overflow-x:hidden; resize: none;"></textarea>
+            <div class="reply_box reply_text">
+                  <textarea name="reply" id="reply"  rows="10" style="overflow-y:scroll; overflow-x:hidden; resize: none; width:100%"></textarea>
             </div>
                 <button type="submit" id="submit">등록</button>
             </form>
         </div>
 
-
+        <%- include("footer") %>
     </body>
 </html>

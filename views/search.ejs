@@ -91,5 +91,6 @@
         <% content_qna.forEach(function(value){ %>
             <a href="/qna-detail/<%= value.q_id %>"><%= value.q_question %></a>
         <% }); %>
+        <%- include("footer") %>
     </body>
 </html>
