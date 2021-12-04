@@ -40,6 +40,25 @@
             border-width:0px;
             background-color:inherit;
           }
+          .category{
+            text-align:center;
+            line-height:50px;
+            margin-left:5px;
+            margin-right:5px;
+            background-color:#A50005;
+            color:white;
+            font-size:14px;
+            padding-left:2px;
+            padding-right:2px;
+            border-radius:15px;
+            width: 20%;
+
+          }
+          .category_row{
+            height:50px;
+            margin-bottom:5px;
+            margin-top:5px;
+          }
           @media screen and (max-width: 992px) {
             .search-bar{
               width:90%;
@@ -50,12 +69,79 @@
             }
 
           }
+          @media screen and (min-width: 993px) {
+            .category_container{
+              padding-left:10%;padding-right:10%;padding-top:10px;
+            }
+            .category{
+              margin-left:20px;
+              margin-right:20px;
+              line-height:60px;
+            }
+            .category_row{
+              margin-bottom:20px;
+              margin-top:20px;
+              height:60px;
+            }
+
+          }
         </style>
         <form action="search" method="get" class="cont search-form">
            <input type="text" class="search-bar border-dark" name="query">
            <i class="search-button fas fa-search fa-2x"></i>
            <input type="submit" class="search-button" value="">
         </form>
+
+        <div class="container category_container">
+          <div class="row justify-content-center category_row">
+              <div class="col-2 category">
+                휴학
+              </div>
+              <div class="col-2 category">
+                졸업
+              </div>
+              <div class="col-2 category">
+                취업
+              </div>
+              <div class="col-2 category">
+                학점
+              </div>
+          </div>
+          <div class="row justify-content-center category_row">
+              <div class="col-2 category">
+                봉사
+              </div>
+              <div class="col-2 category">
+                교환학생
+              </div>
+              <div class="col-2 category">
+                복수전공
+              </div>
+              <div class="col-2 category">
+                출결
+              </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="newq">
+            <h2 style="color:#A50005;">최근질문</h2>
+            <i class="fas fa-plus fa-2x" style="color:#A50005;"></i>
+          </div>
+          <div class="">
+
+          </div>
+          <div class="">
+
+          </div>
+          <div class="">
+
+          </div>
+        </div>
+
+
+
+
         <br>
         <% content_new_qna.forEach(function(value){ %>
             <a href="/qna-detail/<%= value.q_id %>"><%= value.q_question %></a>
