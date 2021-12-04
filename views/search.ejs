@@ -71,6 +71,15 @@
           margin-top : 20px;
           margin-bottom: 20px;
         }
+        .question_box{
+            display:flex;
+            border: 1px solid #A50005;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 5px;
+            justify-content: space-between;
+            word-break: break-word;
+        }
         @media screen and (max-width: 992px) {
           .search-bar{
             width:90%;
@@ -99,13 +108,12 @@
       <div class="container main_content">
         <h3>FAQ</h3>
         <% content_faq.forEach(function(value){ %>
-            <a href="/faq-detail/<%= value.f_id %>" style="color:black !important;text-decoration:none;">
-              <div class="menu_post">
-                <p class="ellipsis">
+          <a href="/faq-detail/<%= value.f_id %>"  style="color:#212529 !important;text-decoration:none;">
+            <div class="question_box">
                 <%= value.f_question %>
-              </p>
-              </div>
-            </a>
+            </div>
+
+          </a>
         <% }); %>
         <br>
         <h3>빠른번호</h3>
@@ -121,13 +129,12 @@
         <br>
         <h3>Q&A</h3>
         <% content_qna.forEach(function(value){ %>
-            <a href="/qna-detail/<%= value.q_id %>" style="color:black !important;text-decoration:none;">
-              <div class="menu_post">
-                <p class="ellipsis">
-                <%= value.q_question %>
-              </p>
-              </div>
-            </a>
+          <a href="/qna-detail/<%= value.q_id %>" style="color:#212529 !important;text-decoration:none;">
+            <div class="question_box">
+              <div><%= value.q_question %></div>
+              <span class="reply_cnt" style="min-width:40px;text-align:center;font-size:10px;">답변<br><%= value.q_ans_cnt %></span>
+            </div>
+          </a>
         <% }); %>
       </div>
         <%- include("footer") %>
