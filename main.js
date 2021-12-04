@@ -59,7 +59,7 @@ app.get('/', (req, res) => { // req : request, res : response
 });
 
 app.get('/newqna', (req, res) => {
-    const sql_new_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE q_ans_cnt=0 ORDER BY q_id DESC";
+    const sql_new_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna ORDER BY q_id DESC";
     sb.query(sql_new_qna,function(err,result,fields){
         if(err) throw err;
         res.render('newqna',{content_new_qna : result});
