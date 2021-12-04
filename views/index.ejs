@@ -14,6 +14,8 @@
     <body>
         <%- include("header") %>
         <style>
+
+
         .cont{
             margin-top:15px;
             position: relative;
@@ -41,23 +43,28 @@
             background-color:inherit;
           }
           .category{
+            font-family: 'Noto Sans KR';
             text-align:center;
             line-height:50px;
             margin-left:5px;
             margin-right:5px;
             background-color:#A50005;
             color:white;
-            font-size:14px;
+            font-size:15px;
             padding-left:2px;
             padding-right:2px;
             border-radius:15px;
             width: 20%;
-
+            color:white !important;
+            text-decoration:none;
           }
           .category_row{
             height:50px;
             margin-bottom:5px;
             margin-top:5px;
+          }
+          .category_container{
+            margin-bottom:15px;
           }
           @media screen and (max-width: 992px) {
             .search-bar{
@@ -71,12 +78,15 @@
           }
           @media screen and (min-width: 993px) {
             .category_container{
-              padding-left:10%;padding-right:10%;padding-top:10px;
+              padding-left:10%;
+              padding-right:10%;
+              padding-top:10px;
             }
             .category{
               margin-left:15px;
               margin-right:15px;
               line-height:60px;
+              font-size:20px;
             }
             .category_row{
               margin-bottom:20px;
@@ -94,39 +104,39 @@
 
         <div class="container category_container">
           <div class="row justify-content-center category_row">
-              <div class="col-2 category">
-                휴학
-              </div>
-              <div class="col-2 category">
-                졸업
-              </div>
-              <div class="col-2 category">
-                취업
-              </div>
-              <div class="col-2 category">
-                학점
-              </div>
+            <div class="col-2 category">
+              <a href="/" class="category">휴학</a>
+            </div>
+            <div class="col-2 category">
+              <a href="/" class="category">졸업</a>
+            </div>
+            <div class="col-2 category">
+              <a href="/" class="category">취업</a>
+            </div>
+            <div class="col-2 category">
+              <a href="/" class="category">학점</a>
+            </div>
           </div>
           <div class="row justify-content-center category_row">
               <div class="col-2 category">
-                봉사
+                <a href="/" class="category">봉사</a>
               </div>
               <div class="col-2 category">
-                교환학생
+                <a href="/" class="category">교환학생</a>
               </div>
               <div class="col-2 category">
-                복수전공
+                <a href="/" class="category">복수전공</a>
               </div>
               <div class="col-2 category">
-                출결
+                <a href="/" class="category">출결</a>
               </div>
           </div>
         </div>
 
         <div class="container">
-          <div class="newq">
-            <h2 style="color:#A50005;">최근질문</h2>
-            <i class="fas fa-plus fa-2x" style="color:#A50005;"></i>
+          <div class="newq" style="position:relative;">
+            <h3 style="color:#A50005;margin-left:20px;font-family: 'Noto Sans KR';font-weight: bold;">최근질문</h3>
+            <i class="fas fa-plus fa-2x" style="color:#A50005;position:absolute;right:0px;transform: translateX(-20px);top:0px;"></i>
           </div>
           <div class="">
 
