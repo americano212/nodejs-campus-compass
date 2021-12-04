@@ -142,7 +142,7 @@ app.get('/search', (req, res) => {
     var query = url.parse(req.url, true).query.query;
     const sql_call_num = "SELECT c_id,c_keyword,c_num,c_where FROM tb_call WHERE c_keyword LIKE ?";
     const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 AND (q_question LIKE ? OR q_content LIKE ?)";
-    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq WHERE (f_question LIKE ? OR f_answer LIKE ?)";
+    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq WHERE (f_question LIKE ? OR f_answer LIKE ? OR f_tag LIKE ?)";
 
     sb.query(sql_call_num,['%' + query + '%'],function(err,result1,fields){
         if(err) throw err;
@@ -150,7 +150,7 @@ app.get('/search', (req, res) => {
         sb.query(sql_qna,['%' + query + '%','%' + query + '%'],function(err,result2,fields){
             if(err) throw err;
 
-            sb.query(sql_faq,['%' + query + '%','%' + query + '%'],function(err,result3,fields){
+            sb.query(sql_faq,['%' + query + '%','%' + query + '%','%' + query + '%'],function(err,result3,fields){
                 if(err) throw err;
 
                 res.render('search',{content_call_num : result1, content_qna:result2, content_faq:result3});
