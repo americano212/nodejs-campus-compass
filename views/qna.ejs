@@ -46,6 +46,19 @@
             border-width:0px;
             background-color:inherit;
           }
+          .question_box{
+              border: 1px solid #A50005;
+              border-radius: 10px;
+              padding: 15px;
+              margin-top: 5px;
+          }
+          .text_box{
+              margin-left: 5%;
+              margin-right: 5%;
+              margin-top: 20px;
+              left: 10%;
+              margin-bottom: 50px;
+          }
           @media screen and (max-width: 992px) {
             .search-bar{
               width:90%;
@@ -63,9 +76,18 @@
            <input type="submit" class="search-button" value="">
         </form>
         <br>
-        <% content_qna.forEach(function(value){ %>
-            <a href="/qna-detail/<%= value.q_id %>"><%= value.q_question %></a>
-        <% }); %>
         <br>
+        <div class="text_box">
+            <h3 style="color:#A50005;">Q&A</h3>
+            <br>
+
+            <% content_qna.forEach(function(value){ %>
+                <div class="question_box">
+                    <a href="/qna-detail/<%= value.q_id %>"><%= value.q_question %></a>
+                    <span class="reply_cnt" style="float: right;margin-top:-10px;">답변<br>&nbsp;&nbsp;<%= value.q_ans_cnt %></span>
+                </div>
+            <% }); %>
+            <br>
+        </div>
     </body>
 </html>
