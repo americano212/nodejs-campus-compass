@@ -1,9 +1,2 @@
 font-family: 'Nanum Gothic', sans-serif;
 font-family: 'Noto Sans KR', sans-serif;
-
-@media screen and (max-width: 992px) {
-  .main_color{
-    background-color:#FF0000;
-  }
-
-}
