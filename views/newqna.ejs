@@ -48,6 +48,18 @@
             border-width:0px;
             background-color:inherit;
           }
+          .question_box{
+              border: 1px solid #A50005;
+              border-radius: 10px;
+              padding: 15px;
+              margin-top: 5px;
+          }
+          .text_box{
+              margin-left: 5%;
+              margin-right: 5%;
+              left: 10%;
+              margin-bottom: 50px;
+          }
           @media screen and (max-width: 992px) {
             .search-bar{
               width:90%;
@@ -58,6 +70,14 @@
             }
 
           }
+          @media screen and (min-width: 993px) {
+            .search-bar{
+              width:50%;
+            }
+            .search-button{
+              right:25%;
+            }
+          }
         </style>
         <form action="search" method="get" class="cont search-form">
            <input type="text" class="search-bar form-control" name="query">
@@ -65,9 +85,26 @@
            <input type="submit" class="search-button" value="">
         </form>
         <br>
-        <% content_new_qna.forEach(function(value){ %>
-            <a href="/qna-detail/<%= value.q_id %>"><%= value.q_question %></a>
-        <% }); %>
+
+        <br>
+        <div class="text_box">
+            <h3 style="color:#A50005;">최근질문</h3>
+            <br>
+
+            <% content_new_qna.forEach(function(value){ %>
+              <a href="/qna-detail/<%= value.q_id %>">
+                <div class="question_box">
+                  <p><%= value.q_question %><span class="reply_cnt" style="float: right;">답변<br>&nbsp;&nbsp;<%= value.q_ans_cnt %></span></p>
+
+                </div>
+              </a>
+
+            <% }); %>
+            <br>
+        </div>
+
+
+
         <br>
         <br>
     </body>
