@@ -87,6 +87,8 @@
             padding-left:20px;
             padding-right:20px;
             margin-bottom: 7px;
+            display : flex;
+            justify-content: space-between;
           }
           .ellipsis{
             text-overflow: ellipsis;
@@ -125,9 +127,7 @@
             }
           }
           @media screen and (min-width: 993px) {
-            h3{
-              margin-left:20%;
-            }
+
             .category_container{
               padding-left:10%;
               padding-right:10%;
@@ -150,16 +150,15 @@
             .search-button{
               right:25%;
             }
-            .menu_post{
-              margin-left : 20%;
-              margin-right : 20%;
+            .main_content{
+              padding-left: 20%;
+                padding-right: 20%;
             }
             .ask-button{
               padding-left : 35%;
               padding-right : 35%;
             }
             .plus-button{
-              right:20%;
               transform: translateX(-100%);
             }
             @media screen and (min-width: 1400px){
@@ -216,9 +215,9 @@
           <% content_new_qna.forEach(function(value){ %>
               <a href="/qna-detail/<%= value.q_id %>" style="color:black !important;text-decoration:none;">
                 <div class="menu_post">
-                  <p class="ellipsis">
+                  <div class="ellipsis">
                   <%= value.q_question %>
-                </p>
+                </div><span class="reply_cnt" style="min-width:40px;text-align:center;font-size:10px;">답변<br><div class="like_number"><%= value.q_ans_cnt %></div></span>
                 </div>
               </a>
           <% }); %>

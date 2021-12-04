@@ -67,6 +67,9 @@
             margin-bottom: 20px;
             margin-top : 5px;
           }
+          .like_number{
+            font-size: 15px;
+          }
           @media screen and (max-width: 992px) {
             .search-bar{
               width:90%;
@@ -106,8 +109,8 @@
             <% content_new_qna.forEach(function(value){ %>
               <a href="/qna-detail/<%= value.q_id %>" style="color:#212529 !important;text-decoration:none;">
                 <div class="question_box">
-                  <div><%= value.q_question %></div>
-                  <span class="reply_cnt" style="min-width:40px;text-align:center;font-size:10px;">답변<br><%= value.q_ans_cnt %></span>
+                  <div style="transform:translateY(5px);"><%= value.q_question %></div>
+                  <span class="reply_cnt" style="min-width:40px;text-align:center;font-size:10px;">답변<br><div class="like_number"><%= value.q_ans_cnt %></div></span>
                 </div>
               </a>
             <% }); %>
