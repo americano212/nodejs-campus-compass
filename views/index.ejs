@@ -124,6 +124,9 @@
               transform: translateX(-20px);
             }
           }
+          .like_number{
+            font-size: 15px;
+          }
           @media screen and (min-width: 993px) {
 
             .category_container{
@@ -213,7 +216,7 @@
           <% content_new_qna.forEach(function(value){ %>
               <a href="/qna-detail/<%= value.q_id %>" style="color:black !important;text-decoration:none;">
                 <div class="menu_post">
-                  <div>
+                  <div style="transform:translateY(5px);">
                   <%= value.q_question %>
                 </div><span class="reply_cnt" style="min-width:40px;text-align:center;font-size:10px;">답변<br><div class="like_number"><%= value.q_ans_cnt %></div></span>
                 </div>
