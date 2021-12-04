@@ -87,6 +87,9 @@
             color: #A50005;
           text-decoration: none;
         }
+        .reply_text{
+          text-align: center;
+        }
           @media screen and (max-width: 992px) {
             .search-bar{
               width:90%;
@@ -144,11 +147,9 @@
                     <a href="/ans-down/<%= value.a_id %>">▼</a></p>
                 </div>
             <% }); %>
-            <br>
-            <br>
             <form method="post" class="reply_create_box">
-            <div class="reply_box">
-                  <textarea name="reply" id="reply" style="﻿overflow-y:scroll; overflow-x:hidden; resize: none;"></textarea>
+            <div class="reply_box reply_text">
+                  <textarea name="reply" id="reply"  rows="10" style="overflow-y:scroll; overflow-x:hidden; resize: none; width:100%"></textarea>
             </div>
                 <button type="submit" id="submit">등록</button>
             </form>
