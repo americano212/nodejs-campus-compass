@@ -11,20 +11,20 @@
         Hello World
         <br>
         <% content_faq.forEach(function(value){ %>
-            <%= value.f_question %></p>
+            <a href="/faq-detail/<%= value.f_id %>"><%= value.f_question %></a>
         <% }); %>
         <br>
         Hello World
         <br>
         <% content_call_num.forEach(function(value){ %>
-            <%= value.c_num %></p>
-            <%= value.c_where %></p>
+            <%= value.c_num %>
+            <%= value.c_where %>
         <% }); %>
         <br>
         Hello World
         <br>
         <% content_qna.forEach(function(value){ %>
-            <%= value.q_question %></p>
+            <a href="/qna-detail/<%= value.q_id %>"><%= value.q_question %></a>
         <% }); %>
     </body>
 </html>
