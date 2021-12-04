@@ -39,9 +39,9 @@ app.use(bodyParser.urlencoded());
 
 // domain으로 들어왔을때 어떤걸 render 해줄지
 app.get('/', (req, res) => { // req : request, res : response
-    const sql_new_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE q_ans_cnt=0 LIMIT 3";
-    const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 LIMIT 3";
-    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq LIMIT 3";
+    const sql_new_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE q_ans_cnt=0 ORDER BY q_id DESC LIMIT 3";
+    const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 ORDER BY q_id DESC LIMIT 3";
+    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq ORDER BY f_id DESC LIMIT 3";
 
     sb.query(sql_new_qna,function(err,result1,fields){
         if(err) throw err;
@@ -59,7 +59,7 @@ app.get('/', (req, res) => { // req : request, res : response
 });
 
 app.get('/newqna', (req, res) => {
-    const sql_new_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE q_ans_cnt=0";
+    const sql_new_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE q_ans_cnt=0 ORDER BY q_id DESC";
     sb.query(sql_new_qna,function(err,result,fields){
         if(err) throw err;
         res.render('newqna',{content_new_qna : result});
@@ -67,7 +67,7 @@ app.get('/newqna', (req, res) => {
 });
 
 app.get('/qna', (req, res) => {
-    const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0";
+    const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 ORDER BY q_id DESC";
     sb.query(sql_qna,function(err,result,fields){
         if(err) throw err;
         res.render('qna',{content_qna : result});
@@ -75,7 +75,7 @@ app.get('/qna', (req, res) => {
 });
 
 app.get('/faq', (req, res) => {
-    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq";
+    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq ORDER BY f_id DESC ";
     sb.query(sql_faq,function(err,result,fields){
         if(err) throw err;
         res.render('faq',{content_faq : result});
@@ -208,9 +208,9 @@ app.get('/faq-down/:id', (req, res) => {
 
 app.get('/search', (req, res) => {
     var query = url.parse(req.url, true).query.query;
-    const sql_call_num = "SELECT c_id,c_keyword,c_num,c_where FROM tb_call WHERE (c_keyword LIKE ? OR c_where LIKE ?)";
-    const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 AND (q_question LIKE ? OR q_content LIKE ?)";
-    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq WHERE (f_question LIKE ? OR f_answer LIKE ? OR f_tag LIKE ?)";
+    const sql_call_num = "SELECT c_id,c_keyword,c_num,c_where FROM tb_call WHERE (c_keyword LIKE ? OR c_where LIKE ?) ORDER BY c_id DESC ";
+    const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 AND (q_question LIKE ? OR q_content LIKE ?) ORDER BY q_id DESC";
+    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq WHERE (f_question LIKE ? OR f_answer LIKE ? OR f_tag LIKE ?) ORDER BY f_id DESC";
 
     sb.query(sql_call_num,['%' + query + '%','%' + query + '%'],function(err,result1,fields){
         if(err) throw err;
