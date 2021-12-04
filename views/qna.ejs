@@ -91,10 +91,13 @@
             <br>
 
             <% content_qna.forEach(function(value){ %>
+              <a href="/qna-detail/<%= value.q_id %>">
                 <div class="question_box">
-                    <a href="/qna-detail/<%= value.q_id %>"><%= value.q_question %></a>
-                    <span class="reply_cnt" style="float: right;margin-top:-10px;">답변<br>&nbsp;&nbsp;<%= value.q_ans_cnt %></span>
+                  <p><%= value.q_question %><span class="reply_cnt" style="float: right;">답변<br>&nbsp;&nbsp;<%= value.q_ans_cnt %></span></p>
+
                 </div>
+              </a>
+
             <% }); %>
             <br>
         </div>

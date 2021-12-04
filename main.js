@@ -95,13 +95,18 @@ app.post('/write', (req, res) => {
     console.log(post);
     const title = Buffer.from(post.title, "utf8").toString('base64');
     const desc = post.description;
+    if(title=='' | desc==''){
+        res.send("<script>alert('빈칸은 입력할 수 없습니다.');location.href='/write';</script>");
+    }
+    else{
+        const sql = 'INSERT INTO tb_qna (q_question, q_content) VALUES';
+        const sqlValue = `("${post.title}","${desc}");`;
+        sb.query(sql+sqlValue,req.body,function(err,result,fields){
+            if(err) throw err;
+            res.redirect('/newqna');
+        });
+    }
 
-    const sql = 'INSERT INTO tb_qna (q_question, q_content) VALUES';
-    const sqlValue = `("${post.title}","${desc}");`;
-    sb.query(sql+sqlValue,req.body,function(err,result,fields){
-        if(err) throw err;
-        res.redirect('/newqna');
-    });
 });
 
 app.get('/qna-detail/:id', (req, res) => {
