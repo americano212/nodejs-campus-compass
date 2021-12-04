@@ -80,15 +80,13 @@
             padding-right: 7%;
           }
           .menu_post{
-            height:60px;
-            line-height:56px;
-            border-radius:15px;
-            border:1px solid #A50005;
-            padding-left:20px;
-            padding-right:20px;
-            margin-bottom: 7px;
-            display : flex;
+            display:flex;
+            border: 1px solid #A50005;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 5px;
             justify-content: space-between;
+            word-break: break-word;
           }
           .ellipsis{
             text-overflow: ellipsis;
@@ -215,7 +213,7 @@
           <% content_new_qna.forEach(function(value){ %>
               <a href="/qna-detail/<%= value.q_id %>" style="color:black !important;text-decoration:none;">
                 <div class="menu_post">
-                  <div class="ellipsis">
+                  <div>
                   <%= value.q_question %>
                 </div><span class="reply_cnt" style="min-width:40px;text-align:center;font-size:10px;">답변<br><div class="like_number"><%= value.q_ans_cnt %></div></span>
                 </div>
@@ -234,11 +232,9 @@
             <a href="/faq" class="plus-button"><i class="fas fa-plus fa-1x" style="color:#A50005;"></i></a>
           </div>
           <% content_faq.forEach(function(value){ %>
-            <a href="/faq-detail/<%= value.f_id %>" style="color:black !important;text-decoration:none;">
+            <a href="/faq-detail/<%= value.f_id %>"  style="color:#212529 !important;text-decoration:none;">
               <div class="menu_post">
-                <p class="ellipsis">
-                <%= value.f_question %>
-              </p>
+                  <%= value.f_question %>
               </div>
             </a>
           <% }); %>
@@ -251,11 +247,10 @@
             <a href="/qna"class="plus-button"><i class="fas fa-plus fa-1x" style="color:#A50005;"></i></a>
           </div>
           <% content_qna.forEach(function(value){ %>
-            <a href="/qna-detail/<%= value.q_id %>" style="color:black !important;text-decoration:none;">
+            <a href="/qna-detail/<%= value.q_id %>" style="color:#212529 !important;text-decoration:none;">
               <div class="menu_post">
-                  <p class="ellipsis">
-                <%= value.q_question %>
-              </p>
+                <div style="transform:translateY(5px);"><%= value.q_question %></div>
+                <span class="reply_cnt" style="min-width:40px;text-align:center;font-size:10px;">답변<br><div class="like_number"><%= value.q_ans_cnt %></div></span>
               </div>
             </a>
           <% }); %>
