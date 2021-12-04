@@ -93,12 +93,14 @@ app.get('/write', (req, res) => {
 app.post('/write', (req, res) => {
     const post = req.body;
     const desc = post.description;
+    const title = sb.escape(post.title);
+    const descript = sb.escape(desc);
     if(post.title=='' | desc==''){
         res.send("<script>alert('빈칸은 입력할 수 없습니다.');location.href='/write';</script>");
     }
     else{
         const sql = 'INSERT INTO tb_qna (q_question, q_content) VALUES(?,?)';
-        const params = [post.title,desc];
+        const params = [title,descript];
         sb.query(sql,params,function(err,result,fields){
             if(err) throw err;
             res.redirect('/newqna');
