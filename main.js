@@ -5,6 +5,24 @@ const app = express();
 const port = 4000; // 서버에서 몇번 포트로 웹을 호스팅할지
 const path = require('path'); // 경로 관련
 
+var mysql = require('mysql');
+
+var db_config  = require('./config/db-config.json');
+// database
+const sb = mysql.createConnection({
+    host     : db_config.host,
+    user     : db_config.user,
+    password : db_config.password,
+    database : db_config.database,
+    dateStrings : 'date'
+});
+
+sb.connect(function(err){
+    if (err) throw err;
+    console.log('Connected DBDB');
+
+});
+
 const favicon = require('serve-favicon');
 app.use(favicon(path.join(__dirname,'public','favicon.ico')));
 app.use(express.static(__dirname+'/public'));
