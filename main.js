@@ -121,7 +121,7 @@ app.post('/qna-detail/:id', (req, res) => {
     console.log(req.body);
     const reply = req.body.reply;
 
-
+    const sql_cntup = "UPDATE tb_qna SET q_ans_cnt = q_ans_cnt + 1 WHERE q_id = ?";
     var id = req.params.id;
     const sql = 'INSERT INTO tb_ans (a_answer, a_q_id) VALUES';
     const sqlValue = `("${reply}","${id}");`;
@@ -129,6 +129,7 @@ app.post('/qna-detail/:id', (req, res) => {
         if(err){
             throw err;
         }
+        sb.query(sql_cntup,[req.params.id],function(err,result_cnt,fields){});
         res.redirect(`/qna-detail/${id}`);
     });
 });
