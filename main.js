@@ -4,9 +4,9 @@ const express = require('express'); // nodejs를 위한 웹 프레임워크로 �
 const app = express();
 const port = 4000; // 서버에서 몇번 포트로 웹을 호스팅할지
 const path = require('path'); // 경로 관련
-
+const sanitize = require('sanitize')
 var mysql = require('mysql');
-
+const url = require('url');
 var db_config  = require('./config/db-config.json');
 // database
 const sb = mysql.createConnection({
@@ -130,17 +130,18 @@ app.get('/faq-detail/:id', (req, res) => {
 });
 
 app.get('/search', (req, res) => {
-    const sql_call_num = "SELECT c_id,c_keyword,c_num,c_where FROM tb_call";
-    const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 LIMIT 3";
-    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq LIMIT 3";
+    var query = url.parse(req.url, true).query.query;
+    const sql_call_num = "SELECT c_id,c_keyword,c_num,c_where FROM tb_call WHERE c_keyword LIKE ?";
+    const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 AND q_question LIKE ?";
+    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq WHERE f_question LIKE ?";
 
-    sb.query(sql_call_num,function(err,result1,fields){
+    sb.query(sql_call_num,['%' + query + '%'],function(err,result1,fields){
         if(err) throw err;
 
-        sb.query(sql_qna,function(err,result2,fields){
+        sb.query(sql_qna,['%' + query + '%'],function(err,result2,fields){
             if(err) throw err;
 
-            sb.query(sql_faq,function(err,result3,fields){
+            sb.query(sql_faq,['%' + query + '%'],function(err,result3,fields){
                 if(err) throw err;
 
                 res.render('search',{content_call_num : result1, content_qna:result2, content_faq:result3});
