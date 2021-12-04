@@ -105,7 +105,7 @@ app.get('/qna-detail/:id', (req, res) => {
                 throw err;
             }
             sb.query(sql_hitup,[req.params.id],function(err,result_hit,fields){});
-            res.render('qna-detail',{question : result[0]?.q_question,  replys : result_reply, self_seq : req.params.id, description : result[0]?.q_content});
+            res.render('qna-detail',{contents : result[0],  replys : result_reply, self_seq : req.params.id});
         });
     });
 });

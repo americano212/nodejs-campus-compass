@@ -12,9 +12,9 @@
     </head>
     <body>
         <%- include("header") %>
-        <%= question %>
+        <%= contents?.q_question %>
         <br>
-        <%= description %>
+        <%= contents?.q_content %>
         <br>
         <% replys.forEach(function(value){ %>
             <%= value.a_answer %>
