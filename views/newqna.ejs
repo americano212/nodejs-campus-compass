@@ -49,10 +49,13 @@
             background-color:inherit;
           }
           .question_box{
+              display:flex;
               border: 1px solid #A50005;
               border-radius: 10px;
               padding: 15px;
               margin-top: 5px;
+              justify-content: space-between;
+              word-break: break-word;
           }
           .text_box{
               margin-left: 5%;
@@ -92,10 +95,10 @@
             <br>
 
             <% content_new_qna.forEach(function(value){ %>
-              <a href="/qna-detail/<%= value.q_id %>">
+              <a href="/qna-detail/<%= value.q_id %>" style="color:#212529 !important;text-decoration:none;">
                 <div class="question_box">
-                  <p><%= value.q_question %><span class="reply_cnt" style="float: right;">답변<br>&nbsp;&nbsp;<%= value.q_ans_cnt %></span></p>
-
+                  <div><%= value.q_question %></div>
+                  <span class="reply_cnt" style="min-width:40px;text-align:center;">답변<br><%= value.q_ans_cnt %></span>
                 </div>
               </a>
 
@@ -107,5 +110,6 @@
 
         <br>
         <br>
+        <%- include("footer") %>
     </body>
 </html>
