@@ -8,12 +8,7 @@
         <title>Campus Compass</title>
     </head>
     <body>
-        <form action="search" method="get" class="search-form">
-        	<input type="text" class="search-bar" name="query" placeholder="검색어를 입력하세요.">
-        	<input type="submit" class="search-button" value="Search" >
-        </form>
-        <br>
-        Hello World
+      <%- include("header") %>        
         <br>
         <% content_new_qna.forEach(function(value){ %>
             <%= value.q_question %></p>
