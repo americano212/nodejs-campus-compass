@@ -127,7 +127,7 @@
            <i class="search-button fas fa-search fa-2x"></i>
            <input type="submit" class="search-button" value="">
         </form>
-        <div class="text_box">
+        <div class="text_box" id="hyper">
             <h3 style="color:#A50005;">Q&A</h3>
             <br>
             <br>
@@ -138,14 +138,14 @@
             <br>
             <br>
             <h6 style="color:#A50005;">내용</h6>
-            <div class="answer_box" id="hyper">
+            <div class="answer_box">
                 <pre style="white-space:pre-wrap"><%- Buffer.from(contents.q_content, "base64").toString('utf8'); %></pre>
             </div>
             <br>
             <br>
             <h6 style="color:#A50005;">답변</h6>
             <% replys.forEach(function(value){ %>
-                <pre class="reply_box" id="hyper" style="white-space:pre-wrap"><%= value.a_answer %><br><p class="like">도움이 되었나요?&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ans-up/<%= value.a_id %>">▲</a>&nbsp;&nbsp;<%= value.a_like %>&nbsp;&nbsp;<a href="/ans-down/<%= value.a_id %>">▼</a></p></pre>
+                <pre class="reply_box" style="white-space:pre-wrap"><%= value.a_answer %><br><p class="like">도움이 되었나요?&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ans-up/<%= value.a_id %>">▲</a>&nbsp;&nbsp;<%= value.a_like %>&nbsp;&nbsp;<a href="/ans-down/<%= value.a_id %>">▼</a></p></pre>
             <% }); %>
             <form method="post" class="reply_create_box">
             <div class="reply_box reply_text">
