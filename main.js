@@ -113,6 +113,19 @@ app.get('/qna-detail/:id', (req, res) => {
     });
 });
 
+app.post('/qna-detail/:id', (req, res) => {
+    const reply = req.body.reply;
+    var id = req.params.id;
+    const sql = 'INSERT INTO tb_ans (a_answer, a_q_id) VALUES';
+    const sqlValue = `("${reply}","${id}");`;
+    sb.query(sql+sqlValue,function(err,result,fields){
+        if(err){
+            throw err;
+        }
+        res.redirect(`/qna-detail/${id}`);
+    });
+});
+
 app.get('/faq-detail/:id', (req, res) => {
     const sql = "SELECT * FROM tb_faq WHERE f_id = ?";
     const sql_hitup = "UPDATE tb_faq SET f_hit = f_hit + 1 WHERE f_id = ?";
