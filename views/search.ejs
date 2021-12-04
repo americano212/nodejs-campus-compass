@@ -120,10 +120,14 @@
         <% }); %>
         <br>
         <h3>빠른번호</h3>
-        <br>
         <% content_call_num.forEach(function(value){ %>
-            <%= value.c_num %>
-            <%= value.c_where %>
+            <div class="menu_post">
+                <p class="ellipsis">
+                    <%= value.c_num %>
+                    <%= value.c_where %>
+                </p>
+            </div>
+
         <% }); %>
         <br>
         <h3>Q&A</h3>
