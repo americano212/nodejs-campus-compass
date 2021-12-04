@@ -10,10 +10,16 @@
         <link rel="icon" href="favicon.ico?v=1.1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <title>Campus Compass</title>
+        <style>
+          body{
+            padding-top:60px;
+          }
+        </style>
     </head>
     <body>
         <%- include("header") %>
         <style>
+
         .cont{
             margin-top:15px;
             position: relative;
@@ -78,6 +84,7 @@
             border-radius:15px;
             border:1px solid #A50005;
             padding-left:20px;
+            padding-right:60px;
           }
 
           .menu_quest{
@@ -191,7 +198,7 @@
         <div class="container main_content">
           <div style="position:relative;margin-bottom:20px;">
             <h3 style="color:#A50005;margin-left:20px;font-family: 'Noto Sans KR';font-weight: bold;">Q&A</h3>
-            <a href="/" style="position:absolute;right:0px;transform: translateX(-20px);top:0px;"><i class="fas fa-plus fa-2x" style="color:#A50005;"></i></a>
+            <a href="/qna" style="position:absolute;right:0px;transform: translateX(-20px);top:0px;"><i class="fas fa-plus fa-2x" style="color:#A50005;"></i></a>
           </div>
           <% content_qna.forEach(function(value){ %>
             <a href="/qna-detail/<%= value.q_id %>" style="color:black !important;text-decoration:none;">
