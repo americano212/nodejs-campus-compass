@@ -8,6 +8,7 @@ const sanitize = require('sanitize')
 var mysql = require('mysql');
 const url = require('url');
 var db_config  = require('./config/db-config.json');
+const bodyParser = require('body-parser');
 // database
 const sb = mysql.createConnection({
     host     : db_config.host,
@@ -30,6 +31,11 @@ app.use(express.static(__dirname+'/public'));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(bodyParser.urlencoded({ limit:'50mb', extended: true }));
+app.use(bodyParser.json({limit:'50mb'})) // for parsing application/json
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 // domain으로 들어왔을때 어떤걸 render 해줄지
 app.get('/', (req, res) => { // req : request, res : response
@@ -112,7 +118,10 @@ app.get('/qna-detail/:id', (req, res) => {
 });
 
 app.post('/qna-detail/:id', (req, res) => {
+    console.log(req.body);
     const reply = req.body.reply;
+
+    const sql_cntup = "UPDATE tb_qna SET q_ans_cnt = q_ans_cnt + 1 WHERE q_id = ?";
     var id = req.params.id;
     const sql = 'INSERT INTO tb_ans (a_answer, a_q_id) VALUES';
     const sqlValue = `("${reply}","${id}");`;
@@ -120,6 +129,7 @@ app.post('/qna-detail/:id', (req, res) => {
         if(err){
             throw err;
         }
+        sb.query(sql_cntup,[req.params.id],function(err,result_cnt,fields){});
         res.redirect(`/qna-detail/${id}`);
     });
 });
