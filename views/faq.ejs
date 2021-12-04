@@ -85,9 +85,11 @@
             <br>
 
             <% content_faq.forEach(function(value){ %>
+              <a href="/faq-detail/<%= value.f_id %>">
                 <div class="question_box">
-                    <p><a href="/faq-detail/<%= value.f_id %>"><%= value.f_question %></a></p>
+                  <p><%= value.f_question %></p>
                 </div>
+              </a>
             <% }); %>
             <br>
         </div>

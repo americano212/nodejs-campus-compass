@@ -88,6 +88,10 @@
             <h6 style="color:#A50005;">질문</h6>
             <div class="question_box">
                 <%= contents.f_question %>
+
+                <a href="/faq-up/<%= contents.f_id %>">up</a>
+                <%= contents.f_like %>
+                <a href="/faq-down/<%= contents.f_id %>">down</a>
             </div>
             <br>
             <br>
@@ -99,8 +103,6 @@
             </div>
         </div>
 
-        <%= contents.f_like %>
-        <a href="/faq-up/<%= contents.f_id %>">up</a>
-        <a href="/faq-down/<%= contents.f_id %>">down</a>
+
     </body>
 </html>
