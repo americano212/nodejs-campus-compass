@@ -68,7 +68,7 @@ app.get('/qna', (req, res) => {
 });
 
 app.get('/faq', (req, res) => {
-    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq LIMIT 3";
+    const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq";
     sb.query(sql_faq,function(err,result,fields){
         if(err) throw err;
         res.render('faq',{content_faq : result});
