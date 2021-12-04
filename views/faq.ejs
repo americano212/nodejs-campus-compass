@@ -14,7 +14,7 @@
         <%- include("header") %>
         <br>
         <% content_faq.forEach(function(value){ %>
-            <%= value.f_question %></p>
+            <a href="/faq-detail/<%= value.f_id %>"><%= value.f_question %></a>
         <% }); %>
         <br>
     </body>

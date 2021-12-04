@@ -133,6 +133,7 @@ app.get('/faq-detail/:id', (req, res) => {
 
         sb.query(sql_hitup,[req.params.id],function(err,result_hit,fields){});
         res.render('faq-detail',{contents : result[0], self_seq : req.params.id});
+        console.log(result[0]);
 
     });
 });
