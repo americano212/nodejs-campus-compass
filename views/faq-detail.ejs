@@ -57,12 +57,12 @@
           }
           .question_box{
               border: 1px solid #A50005;
-              border-radius: 10px;
+              border-radius: 15px;
               padding: 15px;
           }
           .answer_box{
               border: 1px solid #A50005;
-              border-radius: 10px;
+              border-radius: 15px;
               padding: 15px;
           }
           a:link{
@@ -72,6 +72,11 @@
         .like{
           text-align:right;
           margin:0;
+        }
+        pre{
+          font-family: 'Noto Sans KR';
+          font-weight: regular;
+          font-size: 16px;
         }
           @media screen and (max-width: 992px) {
             .search-bar{
@@ -109,10 +114,7 @@
             <br>
             <h6 style="color:#A50005;">답변</h6>
             <div class="answer_box">
-                <p>
-                    <%= contents.f_answer %>
-                </p>
-                <br>
+                <pre><%= contents.f_answer %></pre>
                 <br>
                 <p class="like">
                   도움이 되었나요?&nbsp;&nbsp;&nbsp;&nbsp;

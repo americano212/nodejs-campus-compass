@@ -21,6 +21,10 @@
     <body>
         <%- include("header") %>
         <style>
+        a:link{
+            color:#212529;
+  text-decoration: none;
+        }
         .cont{
             margin-top:15px;
             position: relative;
@@ -49,10 +53,13 @@
             background-color:inherit;
           }
           .question_box{
-              border: 1px solid #A50005;
-              border-radius: 10px;
-              padding: 15px;
-              margin-top: 5px;
+            height:60px;
+            line-height:56px;
+            border-radius:15px;
+            border:1px solid #A50005;
+            padding-left:20px;
+            padding-right:20px;
+            margin-bottom: 7px;
           }
           .text_box{
               margin-left: 5%;
@@ -91,13 +98,10 @@
             <br>
 
             <% content_qna.forEach(function(value){ %>
-              <a href="/qna-detail/<%= value.q_id %>">
                 <div class="question_box">
-                  <p><%= value.q_question %><span class="reply_cnt" style="float: right;">답변<br>&nbsp;&nbsp;<%= value.q_ans_cnt %></span></p>
-
+                    <a href="/qna-detail/<%= value.q_id %>"><%= value.q_question %></a>
+                    <span class="reply_cnt" style="float: right;margin-top:-10px;">답변<br>&nbsp;&nbsp;<%= value.q_ans_cnt %></span>
                 </div>
-              </a>
-
             <% }); %>
             <br>
         </div>
