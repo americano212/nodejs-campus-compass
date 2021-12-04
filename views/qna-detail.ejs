@@ -131,13 +131,13 @@
             <br>
             <h6 style="color:#A50005;">제목</h6>
             <div class="question_box">
-                <%= contents.q_question %>
+                <%- Buffer.from(contents.q_question, "base64").toString('utf8'); %>
             </div>
             <br>
             <br>
             <h6 style="color:#A50005;">내용</h6>
             <div class="answer_box">
-                <pre style="white-space:pre-wrap"><%= contents.q_content %></pre>
+                <pre style="white-space:pre-wrap"><%- Buffer.from(contents.q_content, "base64").toString('utf8'); %></pre>
             </div>
             <br>
             <br>

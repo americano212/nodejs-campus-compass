@@ -93,8 +93,8 @@ app.get('/write', (req, res) => {
 app.post('/write', (req, res) => {
     const post = req.body;
     const desc = post.description;
-    const title = sb.escape(post.title);
-    const descript = sb.escape(desc);
+    const title = Buffer.from(post.title, "utf8").toString('base64');
+    const descript = Buffer.from(desc, "utf8").toString('base64');
     if(post.title=='' | desc==''){
         res.send("<script>alert('빈칸은 입력할 수 없습니다.');location.href='/write';</script>");
     }
@@ -212,10 +212,11 @@ app.get('/search', (req, res) => {
     const sql_qna = "SELECT q_id,q_question,q_date,q_hit,q_ans_cnt FROM tb_qna WHERE NOT q_ans_cnt=0 AND (q_question LIKE ? OR q_content LIKE ?) ORDER BY q_id DESC";
     const sql_faq = "SELECT f_id,f_question,f_date,f_hit FROM tb_faq WHERE (f_question LIKE ? OR f_answer LIKE ? OR f_tag LIKE ?) ORDER BY f_id DESC";
 
+    const query_ ='%'+ Buffer.from(query, "utf8").toString('base64')+'%';
     sb.query(sql_call_num,['%' + query + '%','%' + query + '%'],function(err,result1,fields){
         if(err) throw err;
 
-        sb.query(sql_qna,['%' + query + '%','%' + query + '%'],function(err,result2,fields){
+        sb.query(sql_qna,[query_,query_],function(err,result2,fields){
             if(err) throw err;
 
             sb.query(sql_faq,['%' + query + '%','%' + query + '%','%' + query + '%'],function(err,result3,fields){
