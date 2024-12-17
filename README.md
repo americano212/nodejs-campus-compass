@@ -31,3 +31,6 @@
 6. Stop the project on preview server. `pm2 stop main`
 
 ## 📷 주요화면
+![캠퍼스콤파스_1](https://github.com/user-attachments/assets/2b7fd8b9-86f5-447f-b686-1995e192ede4)
+
+![캠퍼스콤파스_2](https://github.com/user-attachments/assets/295e6632-5129-4601-8272-ceb35560a4a5)
